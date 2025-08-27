@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import PositiveControlSubmission from '../models/positiveControlSubmission.js';
-import FlowValidation from '../models/flowValidation.js';
 // import connectMongoDB from '../libs/mongodb.js';
 import connectMongoDB from '../libs/mongodb';
 
