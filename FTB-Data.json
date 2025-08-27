@@ -1,0 +1,304 @@
+{
+  "caseStudies": [
+    {
+      "id": 1,
+      "title": "Meditation and Stress Study",
+      "category": "human, masking",
+      "researchQuestion": "Does a daily 15-minute guided meditation program reduce stress levels in undergraduate students during final exam week?",
+      "independentVariable": "daily 15-minute guided meditation program",
+      "dependentVariable": "stress levels",
+      "subjectPopulation": "human, undergrad students",
+      "methodsSteps": [
+        {
+          "id": "step1",
+          "text": "20 undergraduate students were recruited to participate during final exam week.",
+          "isCorrect": false,
+          "position": { "x": 50, "y": 100 }
+        },
+        {
+          "id": "step2",
+          "text": "A researcher randomly assigned participants to either a meditation group or a control group.",
+          "isCorrect": false,
+          "position": { "x": 450, "y": 100 }
+        },
+        {
+          "id": "step3",
+          "text": "The meditation group was led by a third-party meditation expert unaware of the study goals in daily 15-minute guided sessions for one week.",
+          "isCorrect": true,
+          "position": { "x": 50, "y": 280 }
+        },
+        {
+          "id": "step4",
+          "text": "The control group spent the same amount of time in a room with quiet music playing.",
+          "isCorrect": true,
+          "position": { "x": 450, "y": 280 }
+        },
+        {
+          "id": "step5",
+          "text": "All study participants completed a self-reported Perceived Stress Scale (PSS) before and after the intervention week.",
+          "isCorrect": false,
+          "position": { "x": 250, "y": 460 }
+        }
+      ],
+      "correctText": "Yes, although the treatment was administered by someone not aware of the study goals, the participants could have an expectation that the guided meditation should reduce stress.",
+      "incorrectText": "Sorry, try again.",
+      "solutionCards": [
+        {
+          "id": "solution1",
+          "text": "Replace the quiet music intervention with one where the control group uses a relaxation coloring book.",
+          "isCorrect": false,
+          "feedback": "Although this addresses the lack of expectation for the control group by using an active intervention, it changes the research question to be comparative about two different treatments. Try a different fix."
+        },
+        {
+          "id": "solution2",
+          "text": "Provide instructions to both groups that have the same text about how the intervention is expected to reduce stress.",
+          "isCorrect": true,
+          "feedback": "Correct - this helps ensure that the only difference between groups is the treatment, and not the expectation of participants."
+        },
+        {
+          "id": "solution3",
+          "text": "Have a researcher unaware of treatment group or study goals perform the assessment of stress.",
+          "isCorrect": false,
+          "feedback": "Although this addresses the possibility that participants are biased in their self-evaluations, their expectations could still reduce stress to cause a measurable difference."
+        },
+        {
+          "id": "solution4",
+          "text": "Use measures of heart rate as an objective measure of stress. Attach the measurement device and conduct the pre-test before assignment to treatment or control.",
+          "isCorrect": false,
+          "feedback": "Although this addresses the possibility that participants are biased in their self-evaluations, their expectations could still reduce stress to cause a measurable difference."
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Mouse Hippocampal Neurogenesis Study",
+      "category": "animal, masking",
+      "researchQuestion": "What is the influence of an enriched environment on hippocampal neurogenesis in a mouse model of Alzheimer's disease?",
+      "independentVariable": "environment (enriched or control)",
+      "dependentVariable": "hippocampal neurogenesis",
+      "subjectPopulation": "transgenic APP/PS1 mice",
+      "methodsSteps": [
+        {
+          "id": "step1",
+          "text": "For the study, a researcher obtains 20 transgenic APP/PS1 mice (serving as the mouse model of Alzheimer's) and 20 wild-type mice.",
+          "isCorrect": false,
+          "position": { "x": 50, "y": 100 }
+        },
+        {
+          "id": "step2",
+          "text": "A researcher unaffiliated with the study uses random labels to tag mice as transgenic or wild-type.",
+          "isCorrect": false,
+          "position": { "x": 400, "y": 100 }
+        },
+        {
+          "id": "step3",
+          "text": "The mice are randomly assigned to control housing or an enriched environment (including wheels, novel objects, tunnels that are changed every week by animal care technicians).",
+          "isCorrect": false,
+          "position": { "x": 750, "y": 100 }
+        },
+        {
+          "id": "step4",
+          "text": "After 7 weeks, BrdU is administered to label new neuron cells.",
+          "isCorrect": false,
+          "position": { "x": 50, "y": 280 }
+        },
+        {
+          "id": "step5",
+          "text": "The researcher sacrifices the animals, prepares the brain tissue for imaging, and performs cell counting.",
+          "isCorrect": true,
+          "position": { "x": 400, "y": 280 }
+        },
+        {
+          "id": "step6",
+          "text": "The researcher uses the key to random labels to identify which data belong to transgenic mice and analyzes the data for differences between the enriched and control environment (with the wild-type mice serving as a control group).",
+          "isCorrect": false,
+          "position": { "x": 750, "y": 280 }
+        }
+      ],
+      "correctText": "Yes, the researcher performing the data collection may be aware of the housing condition of the mice when analyzing the data.",
+      "incorrectText": "Sorry, try again.",
+      "solutionCards": [
+        {
+          "id": "solution1",
+          "text": "Have a researcher unaffiliated with the study prepare the samples and assign samples with random IDs to mask their origin until cell counting is complete.",
+          "isCorrect": true,
+          "feedback": "Correct - this ensures that there is no potential for bias to influence the samples or data collection."
+        },
+        {
+          "id": "solution2",
+          "text": "Have a technician unaffiliated with the study perform the cell counting.",
+          "isCorrect": false,
+          "feedback": "Although this addresses the bias in cell counting, the other steps in preparing the samples may still be affected by expectation bias."
+        },
+        {
+          "id": "solution3",
+          "text": "Increase the number of animals to increase power to detect a true effect.",
+          "isCorrect": false,
+          "feedback": "Although a greater number of animals does increase power, it does not correct for any bias that could be introduced by a failure to mask."
+        },
+        {
+          "id": "solution4",
+          "text": "Correct for bias by using the cell counts from the wild-type mice.",
+          "isCorrect": false,
+          "feedback": "Although this seems like a plausible correction, the experimenter bias might interact with genetic strain; thus this is not a scientifically valid, nor is it an accepted correction, when masking is an option."
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Ketamine Pain Relief in Dogs Study",
+      "category": "animal, placebo",
+      "researchQuestion": "Does low-dose ketamine reduce pain and improve locomotion in dogs?",
+      "independentVariable": "ketamine",
+      "dependentVariable": "pain",
+      "subjectPopulation": "dogs with issues walking",
+      "methodsSteps": [
+        {
+          "id": "step1",
+          "text": "30 dogs exhibiting neuropathic pain behavior during walks are recruited.",
+          "isCorrect": false,
+          "position": { "x": 50, "y": 100 }
+        },
+        {
+          "id": "step2",
+          "text": "Initial baseline assessments will include owner surveys of pain behaviors, a blood panel for inflammatory cytokines, and computerized gait analysis of a 5-minute recording of a walk.",
+          "isCorrect": false,
+          "position": { "x": 400, "y": 100 }
+        },
+        {
+          "id": "step3",
+          "text": "Researchers use simple randomization with individually unique encoded IDs to assign dogs to treatment and control groups.",
+          "isCorrect": false,
+          "position": { "x": 750, "y": 100 }
+        },
+        {
+          "id": "step4",
+          "text": "Dogs assigned to the treatment group will receive a beef-flavored capsule containing ketamine before a morning and evening walk (2 capsules / day). Dogs in the control group will receive walks as normal.",
+          "isCorrect": true,
+          "position": { "x": 50, "y": 280 }
+        },
+        {
+          "id": "step5",
+          "text": "After 21 days, all dogs will receive follow-up assessment by researchers unaware of the treatment assignment.",
+          "isCorrect": false,
+          "position": { "x": 400, "y": 280 }
+        },
+        {
+          "id": "step6",
+          "text": "The data is collected and analyzed, using the unique IDs to decode treatment and control groups.",
+          "isCorrect": false,
+          "position": { "x": 750, "y": 280 }
+        }
+      ],
+      "correctText": "Yes, administration of a \"treat\" before walks may induce a change that is unrelated to the active therapeutic agent (ketamine).",
+      "incorrectText": "Sorry, try again.",
+      "solutionCards": [
+        {
+          "id": "solution1",
+          "text": "Implement a placebo where an inert treatment is embedded in the same kind of capsule. Use masking to ensure that participants and researchers are unaware of treatment assignment.",
+          "isCorrect": true,
+          "feedback": "Correct - a placebo is necessary here, because dogs can learn to associate a \"treat\" with a therapeutic treatment. Masking is also necessary because of human involvement."
+        },
+        {
+          "id": "solution2",
+          "text": "Use only the blood panel and gait analysis data since it is objectively measured and free of human bias.",
+          "isCorrect": false,
+          "feedback": "Although using these measures will reduce human bias in the owner surveys, the placebo effect has been shown to reduce pain in dogs from MRI measurements."
+        },
+        {
+          "id": "solution3",
+          "text": "Perform a difference-in-difference statistical analysis, using each dog's baseline assessment to compare results.",
+          "isCorrect": false,
+          "feedback": "This procedure can adjust for natural variability in pain symptoms, but will not isolate the effect of the intended independent variable (ketamine) from the placebo effect associated with delivering the treatment."
+        },
+        {
+          "id": "solution4",
+          "text": "For the control group, instead of no treatment, use a comparison drug with a well-known level of efficacy to calibrate the change between pre- and post-assessments.",
+          "isCorrect": false,
+          "feedback": "This procedure can provide a comparison scale, but will not isolate the effect of the intended independent variable (ketamine) from the placebo effect associated with delivering the treatment."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "TENS Therapy for Essential Tremor Study",
+      "category": "human, placebo",
+      "researchQuestion": "Does transcutaneous electrical nerve stimulation (TENS) reduce symptoms associated with essential tremor?",
+      "independentVariable": "transcutaneous electrical nerve stimulation (TENS)",
+      "dependentVariable": "involuntary muscle tremors",
+      "subjectPopulation": "human patients with essential tremor",
+      "methodsSteps": [
+        {
+          "id": "step1",
+          "text": "40 human participants with a history of essential tremor are recruited.",
+          "isCorrect": false,
+          "position": { "x": 50, "y": 100 }
+        },
+        {
+          "id": "step2",
+          "text": "All participants are fitted with an accelerometer to continuously monitor and measure muscle tremors.",
+          "isCorrect": false,
+          "position": { "x": 400, "y": 100 }
+        },
+        {
+          "id": "step3",
+          "text": "5 days of data are collected from all participants as a baseline.",
+          "isCorrect": false,
+          "position": { "x": 750, "y": 100 }
+        },
+        {
+          "id": "step4",
+          "text": "A researcher unaffiliated with the study uses simple randomization to assign participants to treatment or control.",
+          "isCorrect": false,
+          "position": { "x": 50, "y": 280 }
+        },
+        {
+          "id": "step5",
+          "text": "Participants in the treatment receive 30 minutes of daily TENS therapy for 5 days. Patients in the control group are instructed to go about their lives as normal.",
+          "isCorrect": true,
+          "position": { "x": 400, "y": 280 }
+        },
+        {
+          "id": "step6",
+          "text": "5 more days of data are collected from all participants; the data is anonymized for group assignment and then sent to a statistical team for analysis.",
+          "isCorrect": false,
+          "position": { "x": 750, "y": 280 }
+        }
+      ],
+      "correctText": "Yes, the missing placebo for the control group is a problem for accurately establishing the influence of the TENS treatment.",
+      "incorrectText": "Sorry, try again.",
+      "solutionCards": [
+        {
+          "id": "solution1",
+          "text": "Implement a sham TENS control. The sham device should be identical in appearance and produce a similar initial tingling sensation that ramps down.",
+          "isCorrect": true,
+          "feedback": "Correct - a placebo is necessary here, because of the physical device. An effective sham will also support masking treatment allocation."
+        },
+        {
+          "id": "solution2",
+          "text": "For the control group, instead of no treatment, use an alternative treatment such as a muscle-relaxant drug.",
+          "isCorrect": false,
+          "feedback": "This procedure can provide a comparison scale, but will not isolate the effect of the intended independent variable (TENS) from the placebo effect associated with delivering the treatment."
+        },
+        {
+          "id": "solution3",
+          "text": "For the control group, instead of no treatment, use an alternative treatment such as an inactive pill.",
+          "isCorrect": false,
+          "feedback": "Although this procedure does provide a comparison between groups, it does not separate the therapeutic effect of TENS from the placebo effect associated with the device itself."
+        },
+        {
+          "id": "solution4",
+          "text": "Implement a sham TENS control. The sham device should be identical in appearance and produce a warming sensation instead of electrical stimulation.",
+          "isCorrect": false,
+          "feedback": "Although this sham corrects for the placebo effect of having a device attached, warming is not as plausible a treatment for tremor compared to electrical stimulation."
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "version": "1.0",
+    "totalCaseStudies": 4,
+    "description": "Fix That Bias - Research Methods Case Studies Dataset",
+    "categories": ["human, masking", "animal, masking", "animal, placebo", "human, placebo"]
+  }
+}

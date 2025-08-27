@@ -1,0 +1,68 @@
+.header-container {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    z-index: 1000;
+}
+
+.header-bar {
+    display: flex;
+    align-items: center;
+    color: #ffffff83;
+    text-align: center;
+    justify-content: space-between;
+    min-height: 36px;
+}
+
+.title-bar {
+    width: 100%;
+    display: flex;
+    margin-left: 1rem;
+}
+
+.header-exit-activity {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.header-exit-activity:hover {
+    color: #ffffff;
+}
+
+.logo {
+    cursor: pointer; /* indicates clickable */
+    height: 36px;
+    width: 36px;
+}
+
+.header-title {
+    color: #000000;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.header-guide-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+}
+
+.help-tooltip-image {
+    height: 32px;
+    width: 32px;
+}
+
+.help-tooltip-image:hover {
+    filter: invert(100%);
+}
+
+.logo-desktop {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}

@@ -1,0 +1,312 @@
+{
+  "nodes": [
+    {
+      "id": "node-1-mice",
+      "type": "customNode",
+      "position": { "x": 200, "y": 0 },
+      "data": {
+        "elements": {
+          "label": { "visible": true, "text": "16 Mice" },
+          "textBoxes": [
+            { "visible": true, "text": "- ALS Transgene" },
+            { "visible": true, "text": "- All Male" }
+          ],
+          "toggles": [], "dropdowns": [], "inputFields": []
+        },
+        "hasInputHandle": false, "hasOutputHandle": false,
+        "bgColor": "#E0E0E0", "textColor": "#333333",
+        "state": "default", "important": false,
+        "hasTopInputHandle": false, "hasBottomInputHandle": false,
+        "hasTopOutputHandle": false, "hasBottomOutputHandle": true
+      },
+      "measured": { "width": 200, "height": 100 },
+      "selected": false, "dragging": false
+    },
+    {
+      "id": "node-2-random-assignment",
+      "type": "customNode",
+      "position": { "x": 200, "y": 150 },
+      "data": {
+        "elements": {
+          "label": { "visible": true, "text": "Randomized Assignment" },
+          "textBoxes": [],
+          "toggles": [], "dropdowns": [], "inputFields": []
+        },
+        "hasInputHandle": false, "hasOutputHandle": false,
+        "bgColor": "#E0E0E0", "textColor": "#333333",
+        "state": "default", "important": false,
+        "hasTopInputHandle": true, "hasBottomInputHandle": false,
+        "hasTopOutputHandle": false, "hasBottomOutputHandle": true
+      },
+      "measured": { "width": 200, "height": 70 },
+      "selected": false, "dragging": false
+    },
+    {
+      "id": "node-3-als-group-1",
+      "type": "customNode",
+      "position": { "x": 50, "y": 300 },
+      "data": {
+        "elements": {
+          "label": { "visible": true, "text": "ALS I Group" },
+          "textBoxes": [{ "visible": true, "text": "- n = 8" }],
+          "toggles": [], "dropdowns": [], "inputFields": []
+        },
+        "hasInputHandle": false, "hasOutputHandle": false,
+        "bgColor": "#E0E0E0", "textColor": "#333333",
+        "state": "default", "important": false,
+        "hasTopInputHandle": true, "hasBottomInputHandle": false,
+        "hasTopOutputHandle": false, "hasBottomOutputHandle": true
+      },
+      "measured": { "width": 150, "height": 80 },
+      "selected": false, "dragging": false
+    },
+    {
+      "id": "node-4-als-swim-group",
+      "type": "customNode",
+      "position": { "x": 350, "y": 300 },
+      "data": {
+        "elements": {
+          "label": { "visible": true, "text": "ALS I SWIM Group" },
+          "textBoxes": [{ "visible": true, "text": "- n = 8" }],
+          "toggles": [], "dropdowns": [], "inputFields": []
+        },
+        "hasInputHandle": false, "hasOutputHandle": false,
+        "bgColor": "#E0E0E0", "textColor": "#333333",
+        "state": "default", "important": false,
+        "hasTopInputHandle": true, "hasBottomInputHandle": false,
+        "hasTopOutputHandle": false, "hasBottomOutputHandle": true
+      },
+      "measured": { "width": 180, "height": 80 },
+      "selected": false, "dragging": false
+    },
+    {
+      "id": "node-5-grip-strength-1",
+      "type": "customNode",
+      "position": { "x": 200, "y": 450 },
+      "data": {
+        "elements": {
+          "label": { "visible": true, "text": "Grip Strength" },
+          "textBoxes": [{ "visible": true, "text": "- Resting Period between trials" }],
+          "toggles": [], "dropdowns": [], "inputFields": []
+        },
+        "hasInputHandle": false, "hasOutputHandle": false,
+        "bgColor": "#E0E0E0", "textColor": "#333333",
+        "state": "default", "important": false,
+        "hasTopInputHandle": true, "hasBottomInputHandle": false,
+        "hasTopOutputHandle": false, "hasBottomOutputHandle": true
+      },
+      "measured": { "width": 220, "height": 80 },
+      "selected": false, "dragging": false
+    },
+    {
+      "id": "node-6-swim-training",
+      "type": "customNode",
+      "position": { "x": 350, "y": 600 },
+      "data": {
+        "elements": {
+          "label": { "visible": true, "text": "Swim Training" },
+          "textBoxes": [],
+          "toggles": [], "dropdowns": [], "inputFields": []
+        },
+        "hasInputHandle": false, "hasOutputHandle": false,
+        "bgColor": "#E0E0E0", "textColor": "#333333",
+        "state": "default", "important": false,
+        "hasTopInputHandle": true, "hasBottomInputHandle": false,
+        "hasTopOutputHandle": false, "hasBottomOutputHandle": true
+      },
+      "measured": { "width": 150, "height": 70 },
+      "selected": false, "dragging": false
+    },
+    {
+      "id": "node-7-grip-strength-2",
+      "type": "customNode",
+      "position": { "x": 200, "y": 750 },
+      "data": {
+        "elements": {
+          "label": { "visible": true, "text": "Grip Strength" },
+          "textBoxes": [{ "visible": true, "text": "- Resting Period between trials" }],
+          "toggles": [], "dropdowns": [], "inputFields": []
+        },
+        "hasInputHandle": false, "hasOutputHandle": false,
+        "bgColor": "#E0E0E0", "textColor": "#333333",
+        "state": "default", "important": false,
+        "hasTopInputHandle": true, "hasBottomInputHandle": false,
+        "hasTopOutputHandle": false, "hasBottomOutputHandle": true
+      },
+      "measured": { "width": 220, "height": 80 },
+      "selected": false, "dragging": false
+    },
+    {
+      "id": "node-8-sample-preprocessing",
+      "type": "customNode",
+      "position": { "x": 200, "y": 900 },
+      "data": {
+        "elements": {
+          "label": { "visible": true, "text": "Sample Preprocessing" },
+          "textBoxes": [
+            { "visible": true, "text": "- Thigh muscle removed & minced" },
+            { "visible": true, "text": "- Washed twice with protease & mitochondrial isolation buffer." }
+          ],
+          "toggles": [], "dropdowns": [], "inputFields": []
+        },
+        "hasInputHandle": false, "hasOutputHandle": false,
+        "bgColor": "#E0E0E0", "textColor": "#333333",
+        "state": "default", "important": false,
+        "hasTopInputHandle": true, "hasBottomInputHandle": false,
+        "hasTopOutputHandle": false, "hasBottomOutputHandle": true
+      },
+      "measured": { "width": 300, "height": 110 },
+      "selected": false, "dragging": false
+    },
+    {
+      "id": "node-9-working-respirometry",
+      "type": "customNode",
+      "position": { "x": 50, "y": 1080 },
+      "data": {
+        "elements": {
+          "label": { "visible": true, "text": "Working Respirometry" },
+          "textBoxes": [
+            { "visible": true, "text": "- Mitochondria added to respiration medium" },
+            { "visible": true, "text": "- Measured oxygen use in presence of fuel (ADP & glutamate)" }
+          ],
+          "toggles": [], "dropdowns": [], "inputFields": []
+        },
+        "hasInputHandle": false, "hasOutputHandle": false,
+        "bgColor": "#E0E0E0", "textColor": "#333333",
+        "state": "default", "important": false,
+        "hasTopInputHandle": true, "hasBottomInputHandle": false,
+        "hasTopOutputHandle": false, "hasBottomOutputHandle": true
+      },
+      "measured": { "width": 300, "height": 110 },
+      "selected": false, "dragging": false
+    },
+    {
+      "id": "node-10-oxidation-staining",
+      "type": "customNode",
+      "position": { "x": 350, "y": 1080 },
+      "data": {
+        "elements": {
+          "label": { "visible": true, "text": "Oxidation Staining" },
+          "textBoxes": [
+            { "visible": true, "text": "- Blots probed with primary Ab stains" },
+            { "visible": true, "text": "- Measured known indicators of oxidative stress." }
+          ],
+          "toggles": [], "dropdowns": [], "inputFields": []
+        },
+        "hasInputHandle": false, "hasOutputHandle": false,
+        "bgColor": "#E0E0E0", "textColor": "#333333",
+        "state": "default", "important": false,
+        "hasTopInputHandle": true, "hasBottomInputHandle": false,
+        "hasTopOutputHandle": false, "hasBottomOutputHandle": true
+      },
+      "measured": { "width": 300, "height": 110 },
+      "selected": false, "dragging": false
+    },
+    {
+      "id": "node-11-mitochondrial-efficiency",
+      "type": "customNode",
+      "position": { "x": 50, "y": 1260 },
+      "data": {
+        "elements": {
+          "label": { "visible": true, "text": "Mitochondrial Efficiency" },
+          "textBoxes": [],
+          "toggles": [], "dropdowns": [], "inputFields": []
+        },
+        "hasInputHandle": false, "hasOutputHandle": false,
+        "bgColor": "#E0E0E0", "textColor": "#333333",
+        "state": "default", "important": false,
+        "hasTopInputHandle": true, "hasBottomInputHandle": false,
+        "hasTopOutputHandle": false, "hasBottomOutputHandle": false
+      },
+      "measured": { "width": 200, "height": 70 },
+      "selected": false, "dragging": false
+    },
+    {
+      "id": "node-12-oxidative-stress",
+      "type": "customNode",
+      "position": { "x": 350, "y": 1260 },
+      "data": {
+        "elements": {
+          "label": { "visible": true, "text": "Oxidative Stress" },
+          "textBoxes": [],
+          "toggles": [], "dropdowns": [], "inputFields": []
+        },
+        "hasInputHandle": false, "hasOutputHandle": false,
+        "bgColor": "#E0E0E0", "textColor": "#333333",
+        "state": "default", "important": false,
+        "hasTopInputHandle": true, "hasBottomInputHandle": false,
+        "hasTopOutputHandle": false, "hasBottomOutputHandle": false
+      },
+      "measured": { "width": 200, "height": 70 },
+      "selected": false, "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "node-1-mice", "sourceHandle": "output-bottom",
+      "target": "node-2-random-assignment", "targetHandle": "input-top",
+      "id": "edge-1-2"
+    },
+    {
+      "source": "node-2-random-assignment", "sourceHandle": "output-bottom",
+      "target": "node-3-als-group-1", "targetHandle": "input-top",
+      "id": "edge-2-3"
+    },
+    {
+      "source": "node-2-random-assignment", "sourceHandle": "output-bottom",
+      "target": "node-4-als-swim-group", "targetHandle": "input-top",
+      "id": "edge-2-4"
+    },
+    {
+      "source": "node-3-als-group-1", "sourceHandle": "output-bottom",
+      "target": "node-5-grip-strength-1", "targetHandle": "input-top",
+      "id": "edge-3-5"
+    },
+    {
+      "source": "node-4-als-swim-group", "sourceHandle": "output-bottom",
+      "target": "node-5-grip-strength-1", "targetHandle": "input-top",
+      "id": "edge-4-5"
+    },
+    {
+      "source": "node-5-grip-strength-1", "sourceHandle": "output-bottom",
+      "target": "node-6-swim-training", "targetHandle": "input-top",
+      "id": "edge-5-6"
+    },
+    {
+      "source": "node-5-grip-strength-1", "sourceHandle": "output-bottom",
+      "target": "node-7-grip-strength-2", "targetHandle": "input-top",
+      "id": "edge-5-7"
+    },
+    {
+      "source": "node-6-swim-training", "sourceHandle": "output-bottom",
+      "target": "node-7-grip-strength-2", "targetHandle": "input-top",
+      "id": "edge-6-7"
+    },
+    {
+      "source": "node-7-grip-strength-2", "sourceHandle": "output-bottom",
+      "target": "node-8-sample-preprocessing", "targetHandle": "input-top",
+      "id": "edge-7-8"
+    },
+    {
+      "source": "node-8-sample-preprocessing", "sourceHandle": "output-bottom",
+      "target": "node-9-working-respirometry", "targetHandle": "input-top",
+      "id": "edge-8-9"
+    },
+    {
+      "source": "node-8-sample-preprocessing", "sourceHandle": "output-bottom",
+      "target": "node-10-oxidation-staining", "targetHandle": "input-top",
+      "id": "edge-8-10"
+    },
+    {
+      "source": "node-9-working-respirometry", "sourceHandle": "output-bottom",
+      "target": "node-11-mitochondrial-efficiency", "targetHandle": "input-top",
+      "id": "edge-9-11"
+    },
+    {
+      "source": "node-10-oxidation-staining", "sourceHandle": "output-bottom",
+      "target": "node-12-oxidative-stress", "targetHandle": "input-top",
+      "id": "edge-10-12"
+    }
+  ],
+  "timestamp": 1716900000001
+}

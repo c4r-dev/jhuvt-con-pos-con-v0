@@ -1,0 +1,12 @@
+/* SessionConfigPopup CSS - Material-UI components handle most styling */
+
+.session-popup-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.session-popup-container {
+  padding: 20px;
+}

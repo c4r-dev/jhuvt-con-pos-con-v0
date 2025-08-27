@@ -1,0 +1,181 @@
+/* 
+ * Word Cloud Testing Page Styles 
+ * Extended from original word-cloud.css with additional debug-specific styles
+ */
+
+/* Import original styles */
+@import '../activity-3/word-cloud.css';
+
+/* Debug-specific styles */
+.debug-panel {
+  position: fixed;
+  top: 50px;
+  right: 20px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  padding: 15px;
+  width: 300px;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.debug-panel h3 {
+  margin: 0 0 10px 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.debug-panel h4 {
+  margin: 10px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.debug-section {
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.debug-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.debug-log {
+  max-height: 200px;
+  overflow-y: auto;
+  font-size: 12px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.debug-log-entry {
+  padding: 5px;
+  border-bottom: 1px solid #eee;
+}
+
+.debug-log-entry:last-child {
+  border-bottom: none;
+}
+
+.debug-timestamp {
+  color: #666;
+  font-size: 11px;
+}
+
+.debug-action {
+  font-weight: bold;
+  color: #333;
+}
+
+.debug-details {
+  word-break: break-word;
+  font-family: monospace;
+  font-size: 11px;
+  color: #444;
+  padding: 3px 0;
+}
+
+.debug-metric {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #555;
+  margin: 5px 0;
+}
+
+.debug-metric-value {
+  font-weight: 500;
+  color: #333;
+}
+
+.debug-state-info {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.debug-state-label {
+  font-weight: 500;
+  color: #666;
+}
+
+.debug-state-value {
+  color: #333;
+}
+
+.debug-controls {
+  display: flex;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.debug-button {
+  padding: 5px 10px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.debug-button:hover {
+  background: #f0f0f0;
+  border-color: #999;
+}
+
+.debug-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: #333;
+}
+
+.debug-banner {
+  background: #ff6b6b;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* Adjust main content when debug panel is present */
+.word-cloud-page.debug-mode {
+  margin-right: 320px; /* Account for debug panel width */
+}
+
+/* Responsive adjustments for debug panel */
+@media (max-width: 1200px) {
+  .debug-panel {
+    width: 250px;
+  }
+  
+  .word-cloud-page.debug-mode {
+    margin-right: 270px;
+  }
+}
+
+@media (max-width: 768px) {
+  .debug-panel {
+    position: static;
+    width: 100%;
+    max-height: none;
+    margin-bottom: 20px;
+  }
+  
+  .word-cloud-page.debug-mode {
+    margin-right: 0;
+  }
+} 

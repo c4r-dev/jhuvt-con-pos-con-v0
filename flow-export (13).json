@@ -1,0 +1,255 @@
+{
+  "nodes": [
+    {
+      "id": "example-node",
+      "type": "customNode",
+      "position": {
+        "x": 199.51892447642007,
+        "y": -228.5733596415218
+      },
+      "data": {
+        "elements": {
+          "label": {
+            "visible": true,
+            "text": "Example Node"
+          },
+          "textBoxes": [
+            {
+              "visible": true,
+              "text": "This is a sample node. Click on it to edit its properties."
+            }
+          ],
+          "toggles": [
+            {
+              "visible": true,
+              "text": "Toggle Example",
+              "value": false
+            }
+          ],
+          "dropdowns": [
+            {
+              "visible": true,
+              "label": "Select an option:",
+              "options": [
+                "Option 1",
+                "Option 2",
+                "Option 3"
+              ],
+              "selected": "Option 1"
+            }
+          ],
+          "inputFields": [
+            {
+              "visible": true,
+              "placeholder": "Type something here...",
+              "value": ""
+            }
+          ]
+        },
+        "hasInputHandle": false,
+        "hasOutputHandle": false,
+        "bgColor": "#c2ffe4",
+        "textColor": "#000000",
+        "state": "default",
+        "important": false,
+        "hasTopInputHandle": true,
+        "hasBottomInputHandle": false,
+        "hasTopOutputHandle": false,
+        "hasBottomOutputHandle": true
+      },
+      "measured": {
+        "width": 367,
+        "height": 232
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "RrM9Mb8iRuae2I6Bj4ixJ",
+      "type": "customNode",
+      "position": {
+        "x": 528.4945089872647,
+        "y": 108.12825006638641
+      },
+      "data": {
+        "elements": {
+          "label": {
+            "visible": true,
+            "text": "process 2"
+          },
+          "textBoxes": [],
+          "toggles": [],
+          "dropdowns": [
+            {
+              "visible": true,
+              "label": "Select an option:",
+              "options": [
+                "Option 1",
+                "Option 2",
+                "Option 3"
+              ],
+              "selected": "Option 1"
+            }
+          ],
+          "inputFields": [
+            {
+              "visible": true,
+              "placeholder": "Type something here...",
+              "value": ""
+            }
+          ]
+        },
+        "hasInputHandle": true,
+        "hasOutputHandle": false,
+        "bgColor": "#f2f2f2",
+        "textColor": "#333333",
+        "state": "default",
+        "important": false,
+        "hasTopInputHandle": false,
+        "hasBottomInputHandle": false,
+        "hasTopOutputHandle": false,
+        "hasBottomOutputHandle": true
+      },
+      "measured": {
+        "width": 204,
+        "height": 176
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "ocHoknNHSlu8fs4VcEpjA",
+      "type": "customNode",
+      "position": {
+        "x": 234.03020836154946,
+        "y": 452.77056880566005
+      },
+      "data": {
+        "elements": {
+          "label": {
+            "visible": true,
+            "text": "Output 1"
+          },
+          "textBoxes": [],
+          "toggles": [],
+          "dropdowns": [],
+          "inputFields": []
+        },
+        "hasInputHandle": false,
+        "hasOutputHandle": false,
+        "bgColor": "#ff0000",
+        "textColor": "#ffffff",
+        "state": "default",
+        "important": false,
+        "hasTopInputHandle": true,
+        "hasBottomInputHandle": false,
+        "hasTopOutputHandle": false,
+        "hasBottomOutputHandle": false
+      },
+      "measured": {
+        "width": 200,
+        "height": 59
+      },
+      "selected": false,
+      "dragging": false
+    },
+    {
+      "id": "dJeQA6FivNbgvNlbkZSC_",
+      "type": "customNode",
+      "position": {
+        "x": -15.197998348922155,
+        "y": 103.35194798042458
+      },
+      "data": {
+        "elements": {
+          "label": {
+            "visible": true,
+            "text": "process 1"
+          },
+          "textBoxes": [],
+          "toggles": [
+            {
+              "visible": true,
+              "text": "Toggle Example",
+              "value": false
+            }
+          ],
+          "dropdowns": [
+            {
+              "visible": true,
+              "label": "Select an option:",
+              "options": [
+                "Option 1",
+                "Option 2",
+                "Option 3"
+              ],
+              "selected": "Option 1"
+            }
+          ],
+          "inputFields": [
+            {
+              "visible": true,
+              "placeholder": "Type something here...",
+              "value": ""
+            }
+          ]
+        },
+        "hasInputHandle": false,
+        "hasOutputHandle": false,
+        "bgColor": "#f2f2f2",
+        "textColor": "#333333",
+        "state": "default",
+        "important": false,
+        "hasTopInputHandle": true,
+        "hasBottomInputHandle": false,
+        "hasTopOutputHandle": false,
+        "hasBottomOutputHandle": true
+      },
+      "measured": {
+        "width": 204,
+        "height": 208
+      },
+      "selected": false,
+      "dragging": false
+    }
+  ],
+  "edges": [
+    {
+      "source": "example-node",
+      "sourceHandle": "output-bottom",
+      "target": "RrM9Mb8iRuae2I6Bj4ixJ",
+      "targetHandle": "input",
+      "id": "xy-edge__example-nodeoutput-bottom-RrM9Mb8iRuae2I6Bj4ixJinput"
+    },
+    {
+      "source": "RrM9Mb8iRuae2I6Bj4ixJ",
+      "sourceHandle": "output-bottom",
+      "target": "ocHoknNHSlu8fs4VcEpjA",
+      "targetHandle": "input",
+      "id": "xy-edge__RrM9Mb8iRuae2I6Bj4ixJoutput-bottom-ocHoknNHSlu8fs4VcEpjAinput",
+      "selected": false
+    },
+    {
+      "source": "RrM9Mb8iRuae2I6Bj4ixJ",
+      "sourceHandle": "output-bottom",
+      "target": "ocHoknNHSlu8fs4VcEpjA",
+      "targetHandle": "input-top",
+      "id": "xy-edge__RrM9Mb8iRuae2I6Bj4ixJoutput-bottom-ocHoknNHSlu8fs4VcEpjAinput-top"
+    },
+    {
+      "source": "example-node",
+      "sourceHandle": "output-bottom",
+      "target": "dJeQA6FivNbgvNlbkZSC_",
+      "targetHandle": "input-top",
+      "id": "xy-edge__example-nodeoutput-bottom-dJeQA6FivNbgvNlbkZSC_input-top"
+    },
+    {
+      "source": "dJeQA6FivNbgvNlbkZSC_",
+      "sourceHandle": "output-bottom",
+      "target": "ocHoknNHSlu8fs4VcEpjA",
+      "targetHandle": "input-top",
+      "id": "xy-edge__dJeQA6FivNbgvNlbkZSC_output-bottom-ocHoknNHSlu8fs4VcEpjAinput-top"
+    }
+  ],
+  "timestamp": 1744263907992
+}
