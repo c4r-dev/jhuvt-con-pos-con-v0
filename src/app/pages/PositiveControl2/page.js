@@ -362,7 +362,7 @@ function PositiveControl2Content() {
             nodesConnectable={false}
             elementsSelectable={false}
             fitView={false}
-            defaultViewport={{ x: 100, y: 75, zoom: 0.8 }}
+            defaultViewport={{ x: 100, y: 0, zoom: 0.8 }}
             minZoom={0.1}
             maxZoom={2}
             proOptions={{ hideAttribution: true }}

@@ -38,31 +38,34 @@ export const saveFlowToDatabase = async (flowName, flowDescription, nodes, edges
 // Get all flowcharts from MongoDB
 export const getFlowsFromDatabase = async () => {
   try {
-    const response = await fetch('/api/customFlowchartAPI');
-    
+    // Fetch the local JSON file from the public directory
+    const response = await fetch('/flowcharts.json');
     if (!response.ok) {
-      throw new Error(`Error: ${response.status}`);
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-
     const flowcharts = await response.json();
     
+    console.log('Loaded flowcharts from JSON:', flowcharts);
+    
     // Format the data to match the structure used by the app
-    return flowcharts.map(flow => {
-      const flowData = JSON.parse(flow.flowchart);
+    const formattedFlows = flowcharts.map(flow => {
       return {
-        id: flow._id,
-        key: flow._id,
-        name: flow.name || `Flow ${flow._id.substring(0, 6)}`,
+        id: flow.id,
+        key: flow.id,
+        name: flow.name || `Flow ${flow.id.substring(0, 6)}`,
         description: flow.description || "",
-        timestamp: new Date(flow.createdAt || flow.createdDate).getTime(),
-        nodeCount: flowData.nodes ? flowData.nodes.length : 0,
-        edgeCount: flowData.edges ? flowData.edges.length : 0,
-        flowData: flowData,
+        timestamp: new Date(flow.createdAt).getTime(),
+        nodeCount: flow.flowData.nodes ? flow.flowData.nodes.length : 0,
+        edgeCount: flow.flowData.edges ? flow.flowData.edges.length : 0,
+        flowData: flow.flowData,
         version: flow.version
       };
     });
+    
+    console.log('Formatted flows:', formattedFlows);
+    return formattedFlows;
   } catch (error) {
-    console.error('Error fetching flows from database:', error);
+    console.error('Error loading flows from JSON:', error);
     return [];
   }
 };

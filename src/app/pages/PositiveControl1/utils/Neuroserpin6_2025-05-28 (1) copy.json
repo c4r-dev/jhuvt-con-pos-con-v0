@@ -23,9 +23,28 @@
       "selected": false, "dragging": false
     },
     {
-      "id": "node-2-random-assignment",
+      "id": "node-5-grip-strength-1",
       "type": "customNode",
       "position": { "x": 200, "y": 150 },
+      "data": {
+        "elements": {
+          "label": { "visible": true, "text": "Grip Strength" },
+          "textBoxes": [{ "visible": true, "text": "- Resting Period between trials" }],
+          "toggles": [], "dropdowns": [], "inputFields": []
+        },
+        "hasInputHandle": false, "hasOutputHandle": false,
+        "bgColor": "#E0E0E0", "textColor": "#333333",
+        "state": "default", "important": false,
+        "hasTopInputHandle": true, "hasBottomInputHandle": false,
+        "hasTopOutputHandle": false, "hasBottomOutputHandle": true
+      },
+      "measured": { "width": 220, "height": 80 },
+      "selected": false, "dragging": false
+    },
+    {
+      "id": "node-2-random-assignment",
+      "type": "customNode",
+      "position": { "x": 200, "y": 280 },
       "data": {
         "elements": {
           "label": { "visible": true, "text": "Randomized Assignment" },
@@ -44,7 +63,7 @@
     {
       "id": "node-3-als-group-1",
       "type": "customNode",
-      "position": { "x": 50, "y": 300 },
+      "position": { "x": 50, "y": 430 },
       "data": {
         "elements": {
           "label": { "visible": true, "text": "ALS I Group" },
@@ -63,7 +82,7 @@
     {
       "id": "node-4-als-swim-group",
       "type": "customNode",
-      "position": { "x": 350, "y": 300 },
+      "position": { "x": 350, "y": 430 },
       "data": {
         "elements": {
           "label": { "visible": true, "text": "ALS I SWIM Group" },
@@ -80,28 +99,9 @@
       "selected": false, "dragging": false
     },
     {
-      "id": "node-5-grip-strength-1",
-      "type": "customNode",
-      "position": { "x": 200, "y": 450 },
-      "data": {
-        "elements": {
-          "label": { "visible": true, "text": "Grip Strength" },
-          "textBoxes": [{ "visible": true, "text": "- Resting Period between trials" }],
-          "toggles": [], "dropdowns": [], "inputFields": []
-        },
-        "hasInputHandle": false, "hasOutputHandle": false,
-        "bgColor": "#E0E0E0", "textColor": "#333333",
-        "state": "default", "important": false,
-        "hasTopInputHandle": true, "hasBottomInputHandle": false,
-        "hasTopOutputHandle": false, "hasBottomOutputHandle": true
-      },
-      "measured": { "width": 220, "height": 80 },
-      "selected": false, "dragging": false
-    },
-    {
       "id": "node-6-swim-training",
       "type": "customNode",
-      "position": { "x": 350, "y": 600 },
+      "position": { "x": 350, "y": 580 },
       "data": {
         "elements": {
           "label": { "visible": true, "text": "Swim Training" },
@@ -244,8 +244,13 @@
   "edges": [
     {
       "source": "node-1-mice", "sourceHandle": "output-bottom",
+      "target": "node-5-grip-strength-1", "targetHandle": "input-top",
+      "id": "edge-1-5"
+    },
+    {
+      "source": "node-5-grip-strength-1", "sourceHandle": "output-bottom",
       "target": "node-2-random-assignment", "targetHandle": "input-top",
-      "id": "edge-1-2"
+      "id": "edge-5-2"
     },
     {
       "source": "node-2-random-assignment", "sourceHandle": "output-bottom",
@@ -259,23 +264,13 @@
     },
     {
       "source": "node-3-als-group-1", "sourceHandle": "output-bottom",
-      "target": "node-5-grip-strength-1", "targetHandle": "input-top",
-      "id": "edge-3-5"
+      "target": "node-6-swim-training", "targetHandle": "input-top",
+      "id": "edge-3-6"
     },
     {
       "source": "node-4-als-swim-group", "sourceHandle": "output-bottom",
-      "target": "node-5-grip-strength-1", "targetHandle": "input-top",
-      "id": "edge-4-5"
-    },
-    {
-      "source": "node-5-grip-strength-1", "sourceHandle": "output-bottom",
-      "target": "node-6-swim-training", "targetHandle": "input-top",
-      "id": "edge-5-6"
-    },
-    {
-      "source": "node-5-grip-strength-1", "sourceHandle": "output-bottom",
       "target": "node-7-grip-strength-2", "targetHandle": "input-top",
-      "id": "edge-5-7"
+      "id": "edge-4-7"
     },
     {
       "source": "node-6-swim-training", "sourceHandle": "output-bottom",
