@@ -15,6 +15,7 @@ import {
 import '@xyflow/react/dist/style.css';
 import './PositiveControl2.css';
 import { loadSessionFlow, loadSubmissionsForSession } from './utils/validationUtils';
+import { getFlowsFromDatabase } from '../PositiveControl1/utils/flowUtils';
 import CustomNode from './components/CustomNode';
 import Header from "@/app/components/Header/Header";
 
@@ -88,6 +89,14 @@ function PositiveControl2Content() {
   // ReactFlow state
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
+  
+  // Debug: Track when nodes change
+  useEffect(() => {
+    const miceNode = nodes.find(n => n.id === 'node-1-mice');
+    if (miceNode) {
+      console.log('[PositiveControl2] NODES UPDATED - 16 Mice position:', miceNode.position);
+    }
+  }, [nodes]);
 
   // Define node types for display
   const nodeTypes = useMemo(() => ({
@@ -104,6 +113,12 @@ function PositiveControl2Content() {
         const isControlNode = node.id.startsWith('control-node-');
         return {
           ...node,
+          // Apply same position adjustments as in loadSessionData  
+          position: node.id === 'node-1-mice' ? 
+            { ...node.position, x: node.position.x - 16 } : 
+            node.id === 'node-12-oxidative-stress' ? 
+            { ...node.position, x: node.position.x - 10 } :
+            node.position,
           type: 'displayNode',
           data: {
             ...node.data,
@@ -230,41 +245,61 @@ function PositiveControl2Content() {
     setError(null);
 
     try {
-      console.log(`[PositiveControl2] Loading session data for: ${sessionID}`);
-      const result = await loadSessionFlow(sessionID);
+      // Load the latest flowchart data directly (like PositiveControl1)
+      const dbFlows = await getFlowsFromDatabase();
+      const selectedFlowData = dbFlows.find(flow => flow.id === flowId);
       
-      if (result.success && result.data) {
-        setSessionData(result.data);
+      if (!selectedFlowData) {
+        throw new Error(`Flow with ID ${flowId} not found.`);
+      }
+      
+      const data = selectedFlowData.flowData;
+      
+      if (data) {
+        // Process nodes exactly like PositiveControl1 but for display mode
+        const processedNodes = data.nodes.map(node => ({
+          ...node,
+          // Adjust node positions for PositiveControl2
+          position: node.id === 'node-1-mice' ? 
+            { ...node.position, x: node.position.x - 16 } : 
+            node.id === 'node-12-oxidative-stress' ? 
+            { ...node.position, x: node.position.x - 10 } :
+            node.position,
+          data: {
+            ...node.data,
+            interactiveMode: false, // Read-only mode for PositiveControl2
+            highlighted: false,
+            selected: false,
+            hasValidation: false,
+            // Preserve all handle properties (same as PositiveControl1)
+            hasInputHandle: node.id === 'node-7-grip-strength-2' ? true : node.data.hasInputHandle,
+            hasOutputHandle: node.data.hasOutputHandle,
+            hasTopInputHandle: node.id === 'node-5-grip-strength-1' ? true : node.data.hasTopInputHandle,
+            hasBottomInputHandle: node.data.hasBottomInputHandle,
+            hasTopOutputHandle: node.data.hasTopOutputHandle,
+            hasBottomOutputHandle: node.data.hasBottomOutputHandle,
+            // Add backward compatibility for double handle properties
+            hasDoubleTopInputHandle: node.data.hasDoubleTopInputHandle || false,
+            hasDoubleBottomInputHandle: node.data.hasDoubleBottomInputHandle || false,
+            hasDoubleBottomOutputHandle: node.data.hasDoubleBottomOutputHandle || false
+          },
+          type: 'displayNode'
+        }));
         
-        // Set up ReactFlow display with session data
-        if (result.data.modifiedFlowData) {
-          const displayNodes = result.data.modifiedFlowData.nodes.map(node => {
-            const isControlNode = node.id.startsWith('control-node-');
-            return {
-              ...node,
-              type: 'displayNode',
-              data: {
-                ...node.data,
-                isControlNode: isControlNode,
-                // Ensure control nodes maintain their blue background and white text
-                bgColor: isControlNode ? '#e3f2fd' : node.data.bgColor,
-                textColor: isControlNode ? '#1976d2' : node.data.textColor,
-                interactiveMode: false, // Read-only mode
-                // Add backward compatibility for double handle properties
-                hasDoubleTopInputHandle: node.data.hasDoubleTopInputHandle || false,
-                hasDoubleBottomInputHandle: node.data.hasDoubleBottomInputHandle || false,
-                hasDoubleBottomOutputHandle: node.data.hasDoubleBottomOutputHandle || false
-              }
-            };
-          });
-          
-          setNodes(displayNodes);
-          setEdges(result.data.modifiedFlowData.edges || []);
-        }
+        setNodes(processedNodes);
+        setEdges(data.edges || []);
         
-        console.log(`[PositiveControl2] Session data loaded successfully`);
+        // Debug: Compare ALL node positions with PositiveControl1
+        console.log('[PositiveControl2] ALL positions:', 
+          Object.fromEntries(processedNodes.map(n => [n.id, n.position]))
+        );
+        
+        // Debug: Check if 16 Mice node exists and its position
+        const miceNode = processedNodes.find(n => n.id === 'node-1-mice');
+        console.log('[PositiveControl2] INITIAL LOAD - 16 Mice position:', miceNode?.position);
+        
       } else {
-        throw new Error(result.message || 'Failed to load session data');
+        throw new Error('Flow data is missing.');
       }
     } catch (err) {
       console.error('Error loading session data:', err);
@@ -282,17 +317,10 @@ function PositiveControl2Content() {
     setIsLoadingSubmissions(true);
     
     try {
-      console.log(`[PositiveControl2] Loading submissions for session: ${sessionID}`);
-      console.log(`[PositiveControl2] API URL: /api/positive-control-submissions/session/${sessionID}`);
-      
       const result = await loadSubmissionsForSession(sessionID);
-      
-      console.log(`[PositiveControl2] API response:`, result);
       
       if (result.success) {
         setSubmissions(result.data || []);
-        console.log(`[PositiveControl2] Found ${result.data?.length || 0} submissions`);
-        console.log(`[PositiveControl2] Submissions data:`, result.data);
       } else {
         console.error('Failed to load submissions:', result.message);
         setSubmissions([]);
@@ -327,11 +355,6 @@ function PositiveControl2Content() {
   const controlGroups = extractControlGroups();
   const validatedSteps = extractValidatedSteps();
 
-  // Debug logging to check data availability
-  console.log('[PositiveControl2] Control Groups count:', controlGroups.length);
-  console.log('[PositiveControl2] Control Groups data:', controlGroups);
-  console.log('[PositiveControl2] Submissions count:', submissions.length);
-  console.log('[PositiveControl2] Submissions data:', submissions);
 
   if (isLoading) {
     return <div className="loading-indicator">Loading session data...</div>;
@@ -353,6 +376,7 @@ function PositiveControl2Content() {
         </div>
         <div className="reactflow-container" ref={reactFlowWrapper}>
           <ReactFlow
+            key={`reactflow-${nodes.length}-${Date.now()}`}
             nodes={nodes}
             edges={edges}
             onNodesChange={onNodesChange}
@@ -362,7 +386,7 @@ function PositiveControl2Content() {
             nodesConnectable={false}
             elementsSelectable={false}
             fitView={false}
-            defaultViewport={{ x: 100, y: 0, zoom: 0.8 }}
+            defaultViewport={{ x: 275, y: 0, zoom: 0.82 }}
             minZoom={0.1}
             maxZoom={2}
             proOptions={{ hideAttribution: true }}

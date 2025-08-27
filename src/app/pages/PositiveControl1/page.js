@@ -190,7 +190,6 @@ function PositiveControlContent() {
     };
 
     try {
-      console.log(`[SessionFlow] Saving session ${currentSessionId} for flow ${flowId}`);
       const result = await saveSessionFlow(
         currentSessionId,
         flowId,
@@ -201,8 +200,6 @@ function PositiveControlContent() {
       
       if (!result.success) {
         console.error('Failed to save session flow:', result.message);
-      } else {
-        console.log(`[SessionFlow] Successfully saved session ${currentSessionId}`);
       }
     } catch (error) {
       console.error('Error saving session flow:', error);
@@ -257,7 +254,7 @@ function PositiveControlContent() {
             selected: false,
             hasValidation: false,
             // Preserve all handle properties
-            hasInputHandle: node.data.hasInputHandle,
+            hasInputHandle: node.id === 'node-7-grip-strength-2' ? true : node.data.hasInputHandle,
             hasOutputHandle: node.data.hasOutputHandle,
             hasTopInputHandle: node.id === 'node-5-grip-strength-1' ? true : node.data.hasTopInputHandle,
             hasBottomInputHandle: node.data.hasBottomInputHandle,
@@ -273,6 +270,12 @@ function PositiveControlContent() {
         
         setNodes(processedNodes);
         setEdges(data.edges || []);
+        
+        // Debug: Compare ALL node positions with PositiveControl2
+        console.log('[PositiveControl1] ALL positions:', 
+          Object.fromEntries(processedNodes.map(n => [n.id, n.position]))
+        );
+        
       } else {
         throw new Error('Flow data is missing.');
       }
@@ -307,26 +310,26 @@ function PositiveControlContent() {
     setEdges((eds) => {
       const updatedEdges = [...eds, { ...params, id: `edge-${Date.now()}` }];
       
-      // Auto-save session flow when edge is added
-      setTimeout(() => {
-        if (selectedFlowInfo) {
-          console.log(`[SessionFlow] Auto-saving after edge addition`);
-          const modifiedFlowData = {
-            nodes: nodes,
-            edges: updatedEdges
-          };
-          
-          saveSessionFlow(
-            currentSessionId,
-            flowId,
-            selectedFlowInfo.name,
-            modifiedFlowData,
-            validations
-          ).catch(error => {
-            console.error('Error auto-saving session flow:', error);
-          });
-        }
-      }, 100);
+      // Auto-save session flow when edge is added (disabled for now)
+      // setTimeout(() => {
+      //   if (selectedFlowInfo) {
+      //     console.log(`[SessionFlow] Auto-saving after edge addition`);
+      //     const modifiedFlowData = {
+      //       nodes: nodes,
+      //       edges: updatedEdges
+      //     };
+      //     
+      //     saveSessionFlow(
+      //       currentSessionId,
+      //       flowId,
+      //       selectedFlowInfo.name,
+      //       modifiedFlowData,
+      //       validations
+      //     ).catch(error => {
+      //       console.error('Error auto-saving session flow:', error);
+      //     });
+      //   }
+      // }, 100);
       
       return updatedEdges;
     });
@@ -398,7 +401,7 @@ function PositiveControlContent() {
 
     // Find the Randomized Assignment and Grip Strength nodes for connections
     const randomizedAssignmentNode = nodes.find(n => n.id === 'node-2-random-assignment');
-    const gripStrengthNode = nodes.find(n => n.id === 'node-5-grip-strength-1');
+    const gripStrengthNode = nodes.find(n => n.id === 'node-7-grip-strength-2');
     
     
     
@@ -430,8 +433,8 @@ function PositiveControlContent() {
         id: `edge-${newNodeId}-grip`,
         source: newNodeId,
         sourceHandle: 'output-bottom', 
-        target: 'node-5-grip-strength-1',
-        targetHandle: 'input-top',
+        target: 'node-7-grip-strength-2',
+        targetHandle: 'input-left',
         type: 'default',
         style: { stroke: '#000', strokeWidth: 2 },
         markerEnd: {
@@ -455,26 +458,26 @@ function PositiveControlContent() {
     setEdges(eds => {
         const updatedEdges = [...eds, ...newEdges];
       
-      // Auto-save session flow when node and edges are added
-      setTimeout(() => {
-        if (selectedFlowInfo) {
-          console.log(`[SessionFlow] Auto-saving after control group addition`);
-          const modifiedFlowData = {
-            nodes: [...nodes, newNode],
-            edges: updatedEdges
-          };
-          
-          saveSessionFlow(
-            currentSessionId,
-            flowId,
-            selectedFlowInfo.name,
-            modifiedFlowData,
-            validations
-          ).catch(error => {
-            console.error('Error auto-saving session flow:', error);
-          });
-        }
-      }, 100);
+      // Auto-save session flow when node and edges are added (disabled for now)
+      // setTimeout(() => {
+      //   if (selectedFlowInfo) {
+      //     console.log(`[SessionFlow] Auto-saving after control group addition`);
+      //     const modifiedFlowData = {
+      //       nodes: [...nodes, newNode],
+      //       edges: updatedEdges
+      //     };
+      //     
+      //     saveSessionFlow(
+      //       currentSessionId,
+      //       flowId,
+      //       selectedFlowInfo.name,
+      //       modifiedFlowData,
+      //       validations
+      //     ).catch(error => {
+      //       console.error('Error auto-saving session flow:', error);
+      //     });
+      //   }
+      // }, 100);
       
       return updatedEdges;
     });
@@ -645,8 +648,6 @@ function PositiveControlContent() {
       sessionId: currentSessionId // Include session ID for reference
     };
 
-    console.log(`[PositiveControl1] Submitting data with sessionId: ${currentSessionId}`);
-    console.log(`[PositiveControl1] Submission data:`, submissionData);
 
     setIsSubmittingWork(true);
 
@@ -722,7 +723,7 @@ function PositiveControlContent() {
           nodesConnectable={false}
           elementsSelectable={false}
           fitView={false}
-          defaultViewport={{ x: 100, y: 0, zoom: 0.8 }}
+          defaultViewport={{ x: 275, y: 0, zoom: 0.82 }}
           minZoom={0.1}
           maxZoom={2}
           proOptions={{ hideAttribution: true }}
@@ -734,7 +735,7 @@ function PositiveControlContent() {
       </div>
 
       <div className="instructions-section">
-        <p>Add positive controls to this experimental flow by typing in the input field below and clicking &quot;ADD TO DIAGRAM&quot;. New control groups will be automatically positioned in the flow alongside the existing ALS I Group and ALS I SWIM Group, with proper connections to Randomized Assignment and Grip Strength.</p>
+        <p>Add positive controls to this experimental flow by typing in the input field below and clicking &quot;ADD TO DIAGRAM&quot;. New control groups will be automatically positioned in the flow alongside the existing ALS I Group and ALS I SWIM Group, with proper connections to Randomized Assignment and Grip Strength 2.</p>
       </div>
 
       <div className="input-area-container">

@@ -10,7 +10,7 @@
         {
           "id": "node-1-mice",
           "type": "customNode",
-          "position": { "x": 430, "y": 10 },
+          "position": { "x": 500, "y": 10 },
           "data": {
             "elements": {
               "label": { "visible": true, "text": "16 Mice" },
@@ -70,7 +70,7 @@
         {
           "id": "node-3-als-group-1",
           "type": "customNode",
-          "position": { "x": 295, "y": 385 },
+          "position": { "x": 250, "y": 385 },
           "data": {
             "elements": {
               "label": { "visible": true, "text": "ALS I Group" },
@@ -147,7 +147,7 @@
         {
           "id": "node-8-sample-preprocessing",
           "type": "customNode",
-          "position": { "x": 308, "y": 735 },
+          "position": { "x": 345, "y": 735 },
           "data": {
             "elements": {
               "label": { "visible": true, "text": "Sample Preprocessing" },
@@ -169,7 +169,7 @@
         {
           "id": "node-9-working-respirometry",
           "type": "customNode",
-          "position": { "x": 100, "y": 915 },
+          "position": { "x": 140, "y": 915 },
           "data": {
             "elements": {
               "label": { "visible": true, "text": "Working Respirometry" },
@@ -191,7 +191,7 @@
         {
           "id": "node-10-oxidation-staining",
           "type": "customNode",
-          "position": { "x": 520, "y": 915 },
+          "position": { "x": 540, "y": 915 },
           "data": {
             "elements": {
               "label": { "visible": true, "text": "Oxidation Staining" },
@@ -232,7 +232,7 @@
         {
           "id": "node-12-oxidative-stress",
           "type": "customNode",
-          "position": { "x": 605, "y": 1065 },
+          "position": { "x": 600, "y": 1065 },
           "data": {
             "elements": {
               "label": { "visible": true, "text": "Oxidative Stress" },

@@ -7,8 +7,6 @@ export const getFlowsFromDatabase = async () => {
     }
     const flowcharts = await response.json();
     
-    console.log('Loaded flowcharts from JSON:', flowcharts);
-    
     // Format the data to match the structure used by the app
     const formattedFlows = flowcharts.map(flow => {
       return {
@@ -23,8 +21,6 @@ export const getFlowsFromDatabase = async () => {
         version: flow.version
       };
     });
-    
-    console.log('Formatted flows:', formattedFlows);
     return formattedFlows;
   } catch (error) {
     console.error('Error loading flows from JSON:', error);
