@@ -774,23 +774,25 @@ function PositiveControlContent() {
 
           {inputType === 'validateStep' && (
             <div className="validate-step-form">
-              <label htmlFor="node-multiselect">Select Node(s) for Validation:</label>
-              <select 
-                id="node-multiselect"
-                multiple 
-                value={selectedNodesForValidation.map(n => n.id)}
-                onChange={handleMultiselectChange}
-                className="node-multiselect-dropdown"
-              >
-                {allNodesForSelection.map(node => (
-                  <option key={node.id} value={node.id}>
-                    {node.label}
-                  </option>
-                ))}
-              </select>
-              {selectedNodesForValidation.length > 0 && (
-                <p>Selected: {selectedNodesForValidation.map(n => n.label).join(', ' )}</p>
-              )}
+              <div className="node-selection-container">
+                <label htmlFor="node-multiselect" className="node-selection-label">Select Node(s) for Validation:</label>
+                <select 
+                  id="node-multiselect"
+                  multiple 
+                  value={selectedNodesForValidation.map(n => n.id)}
+                  onChange={handleMultiselectChange}
+                  className="node-multiselect-dropdown"
+                >
+                  {allNodesForSelection.map(node => (
+                    <option key={node.id} value={node.id}>
+                      {node.label}
+                    </option>
+                  ))}
+                </select>
+                {selectedNodesForValidation.length > 0 && (
+                  <p>Selected: {selectedNodesForValidation.map(n => n.label).join(', ' )}</p>
+                )}
+              </div>
               <textarea 
                 placeholder="Enter validation text for selected node(s)..."
                 value={validationText}

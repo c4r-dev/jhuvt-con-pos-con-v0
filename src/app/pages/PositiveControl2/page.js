@@ -20,9 +20,25 @@ import CustomNode from './components/CustomNode';
 import Header from "@/app/components/Header/Header";
 
 // Simple node wrapper for display (read-only)
-const DisplayNode = ({ ...props }) => {
+const DisplayNode = ({ selectedControlGroupId, selectedValidatedStepNodeIds, ...props }) => {
   const isControlNode = props.data.isControlNode || props.id.startsWith('control-node-');
   const isHighlighted = props.data.highlighted || false;
+  const hasValidation = props.data.hasValidation || false;
+  const isSelectedControlNode = selectedControlGroupId && props.id === selectedControlGroupId;
+  const isSelectedValidatedNode = selectedValidatedStepNodeIds && selectedValidatedStepNodeIds.includes(props.id);
+  
+  // Determine background color based on selection state
+  let bgColor = props.data.bgColor;
+  let textColor = props.data.textColor;
+  
+  if (isSelectedControlNode || isSelectedValidatedNode) {
+    bgColor = '#d4edda';
+    textColor = '#155724';
+  } else if (isControlNode) {
+    bgColor = '#e3f2fd';
+    textColor = '#1976d2';
+  }
+  // Keep original colors for validated nodes (no special yellow background)
   
   return (
     <div
@@ -40,9 +56,8 @@ const DisplayNode = ({ ...props }) => {
         updateNode={() => {}}
         data={{
           ...props.data,
-          // Ensure control nodes have blue background and white text
-          bgColor: isControlNode ? '#e3f2fd' : props.data.bgColor,
-          textColor: isControlNode ? '#1976d2' : props.data.textColor
+          bgColor: bgColor,
+          textColor: textColor
         }}
       />
       {isControlNode && (
@@ -62,6 +77,28 @@ const DisplayNode = ({ ...props }) => {
           fontWeight: 'bold'
         }}>
           +
+        </div>
+      )}
+      {hasValidation && (
+        <div style={{
+          position: 'absolute',
+          top: '-10px',
+          left: '-10px',
+          width: '20px',
+          height: '20px',
+          borderRadius: '50%',
+          backgroundColor: '#FFD700',
+          border: '2px solid white',
+          boxShadow: '0 0 5px rgba(0,0,0,0.3)',
+          zIndex: 1001,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontSize: '10px',
+          fontWeight: 'bold',
+          color: '#8B4513'
+        }}>
+          ✓
         </div>
       )}
     </div>
@@ -85,6 +122,8 @@ function PositiveControl2Content() {
   const [selectedRowId, setSelectedRowId] = useState(null);
   const [hoveredRowId, setHoveredRowId] = useState(null);
   const [currentDisplaySubmissionIndex, setCurrentDisplaySubmissionIndex] = useState(0);
+  const [selectedControlGroupId, setSelectedControlGroupId] = useState(null);
+  const [selectedValidatedStepNodeIds, setSelectedValidatedStepNodeIds] = useState([]);
 
   // ReactFlow state
   const [nodes, setNodes, onNodesChange] = useNodesState([]);
@@ -100,8 +139,8 @@ function PositiveControl2Content() {
 
   // Define node types for display
   const nodeTypes = useMemo(() => ({
-    displayNode: DisplayNode
-  }), []);
+    displayNode: (props) => <DisplayNode {...props} selectedControlGroupId={selectedControlGroupId} selectedValidatedStepNodeIds={selectedValidatedStepNodeIds} />
+  }), [selectedControlGroupId, selectedValidatedStepNodeIds]);
 
   // Update displayed ReactFlow based on submission index
   const updateDisplayedFlow = useCallback((submissionIndex) => {
@@ -123,6 +162,8 @@ function PositiveControl2Content() {
           data: {
             ...node.data,
             isControlNode: isControlNode,
+            // Preserve validation status
+            hasValidation: node.data.hasValidation || false,
             // Ensure control nodes maintain their blue background and white text
             bgColor: isControlNode ? '#e3f2fd' : node.data.bgColor,
             textColor: isControlNode ? '#1976d2' : node.data.textColor,
@@ -187,6 +228,9 @@ function PositiveControl2Content() {
     submissions.forEach((submission, submissionIndex) => {
       if (submission.validations && submission.validations.length > 0) {
         submission.validations.forEach((validation, validationIndex) => {
+          // Set row background to match default node background (grey)
+          let rowBackgroundColor = '#f5f5f5'; // Grey to match default node background
+          
           validatedSteps.push({
             id: `${submission._id}-validation-${validationIndex}`,
             submissionIndex: submissionIndex + 1,
@@ -196,18 +240,21 @@ function PositiveControl2Content() {
             nodeIds: validation.nodeIds || [],
             nodeLabels: validation.nodeLabels || [],
             timestamp: formatDate(validation.timestamp || submission.createdAt),
-            submissionDate: formatDate(submission.submissionMetadata?.submissionDate || submission.createdAt)
+            submissionDate: formatDate(submission.submissionMetadata?.submissionDate || submission.createdAt),
+            rowBackgroundColor: rowBackgroundColor
           });
         });
       }
     });
     
     return validatedSteps;
-  }, [submissions]);
+  }, [submissions, nodes]);
 
   // Handle row interactions
-  const handleRowClick = useCallback((submissionArrayIndex, rowId) => {
+  const handleRowClick = useCallback((submissionArrayIndex, rowId, controlGroupId = null, validatedStepNodeIds = []) => {
     setSelectedRowId(rowId);
+    setSelectedControlGroupId(controlGroupId);
+    setSelectedValidatedStepNodeIds(validatedStepNodeIds);
     updateDisplayedFlow(submissionArrayIndex);
   }, [updateDisplayedFlow]);
 
@@ -270,7 +317,7 @@ function PositiveControl2Content() {
             interactiveMode: false, // Read-only mode for PositiveControl2
             highlighted: false,
             selected: false,
-            hasValidation: false,
+            hasValidation: node.data.hasValidation || false, // Preserve validation status
             // Preserve all handle properties (same as PositiveControl1)
             hasInputHandle: node.id === 'node-7-grip-strength-2' ? true : node.data.hasInputHandle,
             hasOutputHandle: node.data.hasOutputHandle,
@@ -475,7 +522,7 @@ function PositiveControl2Content() {
                             ${selectedRowId === `control-${control.id}` ? 'selected-row' : ''}
                             ${hoveredRowId === `control-${control.id}` ? 'hovered-row' : ''}
                           `.trim()}
-                          onClick={() => handleRowClick(control.submissionArrayIndex, `control-${control.id}`)}
+                          onClick={() => handleRowClick(control.submissionArrayIndex, `control-${control.id}`, control.id)}
                           onMouseEnter={() => handleRowHover(control.submissionArrayIndex, `control-${control.id}`)}
                           onMouseLeave={handleRowLeave}
                           style={{
@@ -484,7 +531,7 @@ function PositiveControl2Content() {
                             gap: '10px',
                             padding: '10px',
                             cursor: 'pointer',
-                            backgroundColor: index % 2 === 0 ? '#fff' : '#f5f5f5',
+                            backgroundColor: selectedRowId === `control-${control.id}` ? '#d4edda' : '#e3f2fd',
                             borderBottom: '1px solid black'
                           }}
                         >
@@ -559,7 +606,7 @@ function PositiveControl2Content() {
                             ${selectedRowId === step.id ? 'selected-row' : ''}
                             ${hoveredRowId === step.id ? 'hovered-row' : ''}
                           `.trim()}
-                          onClick={() => handleRowClick(step.submissionArrayIndex, step.id)}
+                          onClick={() => handleRowClick(step.submissionArrayIndex, step.id, null, step.nodeIds || [])}
                           onMouseEnter={() => handleRowHover(step.submissionArrayIndex, step.id)}
                           onMouseLeave={handleRowLeave}
                           style={{
@@ -568,7 +615,7 @@ function PositiveControl2Content() {
                             gap: '10px',
                             padding: '10px',
                             cursor: 'pointer',
-                            backgroundColor: index % 2 === 0 ? '#fff' : '#f5f5f5',
+                            backgroundColor: selectedRowId === step.id ? '#d4edda' : step.rowBackgroundColor,
                             borderBottom: '1px solid black'
                           }}
                         >
