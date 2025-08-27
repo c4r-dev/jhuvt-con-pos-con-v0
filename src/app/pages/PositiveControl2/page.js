@@ -15,7 +15,7 @@ import {
 import '@xyflow/react/dist/style.css';
 import './PositiveControl2.css';
 import { loadSessionFlow, loadSubmissionsForSession } from './utils/validationUtils';
-import CustomNode from '../designer/components/CustomNode';
+import CustomNode from './components/CustomNode';
 import Header from "@/app/components/Header/Header";
 
 // Simple node wrapper for display (read-only)

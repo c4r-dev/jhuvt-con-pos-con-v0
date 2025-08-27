@@ -13,10 +13,10 @@ import {
   useEdgesState
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
-import { getFlowsFromDatabase } from '../designer/utils/flowUtils';
+import { getFlowsFromDatabase } from './utils/flowUtils';
 import './PositiveControl1.css';
 import { saveSessionFlow, loadSessionFlow, submitPositiveControlWork } from './utils/validationUtils';
-import CustomNode from '../designer/components/CustomNode';
+import CustomNode from './components/CustomNode';
 import Header from "@/app/components/Header/Header";
 
 // Wrapper component for CustomNode with highlighting
