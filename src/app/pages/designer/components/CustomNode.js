@@ -162,7 +162,7 @@ const CustomNode = ({ id, data, selected, isConnectable, updateNode }) => {
             type: 'textBox',
             content: (
               <div key={`textbox-${index}`} className="node-content">
-                {textBox.text}
+                {textBox.text.replace(/^- /, '• ')}
               </div>
             )
           });

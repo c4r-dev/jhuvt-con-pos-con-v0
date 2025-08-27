@@ -709,10 +709,6 @@ function PositiveControlContent() {
         </div>
       )} */}
 
-      <div className="instructions-section">
-        <p>Add positive controls to this experimental flow by typing in the input field below and clicking &quot;ADD TO DIAGRAM&quot;. New control groups will be automatically positioned in the flow alongside the existing ALS I Group and ALS I SWIM Group, with proper connections to Randomized Assignment and Grip Strength.</p>
-      </div>
-
       <div className="reactflow-container" ref={reactFlowWrapper}>
         <ReactFlow
           nodes={nodes}
@@ -725,13 +721,20 @@ function PositiveControlContent() {
           nodesDraggable={true}
           nodesConnectable={false}
           elementsSelectable={false}
-          fitView
+          fitView={false}
+          defaultViewport={{ x: 100, y: 80, zoom: 0.8 }}
+          minZoom={0.1}
+          maxZoom={2}
           proOptions={{ hideAttribution: true }}
         >
           <Background variant="dots" gap={12} size={1} />
           <Controls />
           <MiniMap />
         </ReactFlow>
+      </div>
+
+      <div className="instructions-section">
+        <p>Add positive controls to this experimental flow by typing in the input field below and clicking &quot;ADD TO DIAGRAM&quot;. New control groups will be automatically positioned in the flow alongside the existing ALS I Group and ALS I SWIM Group, with proper connections to Randomized Assignment and Grip Strength.</p>
       </div>
 
       <div className="input-area-container">

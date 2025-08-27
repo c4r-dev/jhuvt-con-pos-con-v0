@@ -29,7 +29,7 @@ const DisplayNode = ({ ...props }) => {
         border: isHighlighted ? '2px solid #ff6b6b' : 'none',
         borderRadius: '6px',
         minWidth: '150px',
-        opacity: isControlNode ? 1 : 0.7,
+        opacity: 1,
         transform: isControlNode ? 'scale(1.02)' : 'scale(1)',
         boxShadow: isControlNode ? '0 2px 8px rgba(0,0,0,0.15)' : '0 1px 3px rgba(0,0,0,0.1)'
       }}
@@ -361,7 +361,10 @@ function PositiveControl2Content() {
             nodesDraggable={false}
             nodesConnectable={false}
             elementsSelectable={false}
-            fitView
+            fitView={false}
+            defaultViewport={{ x: 100, y: 75, zoom: 0.8 }}
+            minZoom={0.1}
+            maxZoom={2}
             proOptions={{ hideAttribution: true }}
           >
             <Background variant="dots" gap={12} size={1} />

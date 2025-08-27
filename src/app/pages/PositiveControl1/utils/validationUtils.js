@@ -110,12 +110,11 @@ export const saveSessionFlow = async (sessionId, originalFlowId, originalFlowNam
       }),
     });
 
-    const result = await response.json();
-
     if (!response.ok) {
-      throw new Error(result.message || 'Failed to save session flow');
+      throw new Error(`Failed to save session flow: ${response.status} ${response.statusText}`);
     }
 
+    const result = await response.json();
     return result;
   } catch (error) {
     console.error('Error saving session flow:', error);
